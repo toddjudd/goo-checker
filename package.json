@@ -1,10 +1,11 @@
 {
-  "name": "crawler",
+  "name": "goo-checker",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Checks for the sale status of Elegoo Mars Pro on My Mini Factory",
+  "main": "start.js.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node start.js"
   },
   "author": "",
   "license": "ISC",
