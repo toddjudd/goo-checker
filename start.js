@@ -38,19 +38,28 @@ var task = cron.schedule('0 0 * * * *', () => {
         soldOut = pro.status === 'sold-out';
         if (!soldOut) {
           console.log('Not Sold Out!!');
-          axios.post(slackUrl, { text: 'The Elegoo Mars Pro may not be sold out any more' });
+          axios.post(process.env.slackUrl, { text: 'The Elegoo Mars Pro may not be sold out any more' });
+          axios.post(process.env.discordUrl, { content: 'The Elegoo Mars Pro may not be sold out any more' });
         }
         console.log('Still sold out... Bummer Man');
       } catch (err) {
         console.log('Try Catch Error!');
         console.log(err);
-        axios.post(slackUrl, { text: 'There was an error trying to Parse the My Mini Factory response.' });
+        axios.post(process.env.slackUrl, {
+          text: 'There was an error trying to Parse the My Mini Factory response.',
+        });
+        axios.post(process.env.discordUrl, {
+          content: 'There was an error trying to Parse the My Mini Factory response.',
+        });
       }
     })
     .catch((err) => {
       console.log('Fetch Error!');
       console.log(err);
       axios.post(process.env.slackUrl, {
+        text: 'There was an error trying to Fetch the My Mini Factory data.',
+      });
+      axios.post(process.env.discordUrl, {
         text: 'There was an error trying to Fetch the My Mini Factory data.',
       });
     });

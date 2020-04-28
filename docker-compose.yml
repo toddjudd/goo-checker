@@ -1,0 +1,6 @@
+version: '3.7'
+services:
+  goo-checker:
+    container_name: 'goo'
+    env_file:
+      - /docker/goo/variables.env
