@@ -5,7 +5,11 @@
   "main": "start.js.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node start.js"
+    "start": "node start.js",
+    "docker-build": "docker build -t goo-checker:latest .",
+    "docker-run": "docker run --name goo-checker -d --rm --env-file ./docker-local.env goo-checker",
+    "docker-push": "docker tag goo-checker:latest docker.enlinx.com/goo-checker:latest & docker push docker.enlinx.com/goo-checker:latest",
+    "docker": "npm run docker-build & npm run docker-run"
   },
   "author": "",
   "license": "ISC",
